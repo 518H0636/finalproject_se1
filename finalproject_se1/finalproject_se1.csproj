@@ -132,25 +132,40 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DbMode.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbMode.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DbMode.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbMode.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DbModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblLogin.cs">
-      <DependentUpon>DbMode.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\tblAgent.cs">
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblBillDetail.cs">
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCategory.cs">
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblEmployee.cs">
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblGood.cs">
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblGoodRecieve.cs">
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Warehousemanagement.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Warehousemanagement.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Warehousemanagement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Warehousemanagement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Warehousemanagement.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -161,25 +176,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\DbMode.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbMode.Context.cs</LastGenOutput>
-      <DependentUpon>DbModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\DbMode.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbModel.edmx</DependentUpon>
-      <LastGenOutput>DbMode.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\DbModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DbModel.edmx.diagram">
-      <DependentUpon>DbModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -191,6 +189,16 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Models\Warehousemanagement.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Warehousemanagement.edmx</DependentUpon>
+      <LastGenOutput>Warehousemanagement.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Warehousemanagement.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Warehousemanagement.edmx</DependentUpon>
+      <LastGenOutput>Warehousemanagement.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -204,6 +212,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <EntityDeploy Include="Models\Warehousemanagement.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Warehousemanagement.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Warehousemanagement.edmx.diagram">
+      <DependentUpon>Warehousemanagement.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

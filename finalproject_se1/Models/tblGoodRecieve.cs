@@ -11,16 +11,13 @@ namespace finalproject_se1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class tblLogin
+    
+    public partial class tblGoodRecieve
     {
-        public int userid { get; set; }
-        [Required(ErrorMessage ="Please enter your name")]
-        [Display(Name = "Agent Name")]
-        public string agentname { get; set; }
-        [Display(Name = "Password")]
-        [Required(ErrorMessage = "Please enter your password")]
-        public string agpassword { get; set; }
+        public string greID { get; set; }
+        public string empID { get; set; }
+        public string agentID { get; set; }
+        public System.DateTime sellDate { get; set; }
+        public Nullable<double> greTotal { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace finalproject_se1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBloginEntities : DbContext
+    public partial class WarehousemanagementEntities : DbContext
     {
-        public DBloginEntities()
-            : base("name=DBloginEntities")
+        public WarehousemanagementEntities()
+            : base("name=WarehousemanagementEntities")
         {
         }
     
@@ -25,6 +25,11 @@ namespace finalproject_se1.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tblLogin> tblLogin { get; set; }
+        public virtual DbSet<tblAgent> tblAgent { get; set; }
+        public virtual DbSet<tblBillDetail> tblBillDetail { get; set; }
+        public virtual DbSet<tblCategory> tblCategory { get; set; }
+        public virtual DbSet<tblEmployee> tblEmployee { get; set; }
+        public virtual DbSet<tblGood> tblGood { get; set; }
+        public virtual DbSet<tblGoodRecieve> tblGoodRecieve { get; set; }
     }
 }

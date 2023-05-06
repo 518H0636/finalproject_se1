@@ -9,10 +9,10 @@ namespace finalproject_se1.Controllers
 {
     public class HomeController : Controller
     {
-        DBloginEntities db= new DBloginEntities();
+        WarehousemanagementEntities db = new WarehousemanagementEntities();
         public ActionResult Index()
         {
-            return View(db.tblLogin.ToList());
+            return View(db.tblAgent.ToList());
         }
         public ActionResult LogOut()
         {
@@ -26,13 +26,12 @@ namespace finalproject_se1.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogIn(tblLogin tBLlogin)
+        public ActionResult LogIn(tblAgent tBLAgent)
         {
-            var checkLogin = db.tblLogin.Where(x => x.agentname.Equals(tBLlogin.agentname) && x.agpassword.Equals(tBLlogin.agpassword)).FirstOrDefault();
+            var checkLogin = db.tblAgent.Where(x => x.agentName.Equals(tBLAgent.agentName) && x.agentPass.Equals(tBLAgent.agentPass)).FirstOrDefault();
             if (checkLogin != null)
             {
-                Session["userid"]= tBLlogin.userid.ToString();
-                Session["agentname"] = tBLlogin.agentname.ToString();
+                Session["agentName"] = tBLAgent.agentName.ToString();
                 return RedirectToAction("Index", "Home");
             }
             else

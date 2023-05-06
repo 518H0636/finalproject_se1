@@ -1,4 +1,4 @@
-﻿@model IEnumerable<finalproject_se1.Models.tblLogin>
+﻿@model IEnumerable<finalproject_se1.Models.tblAgent>
 
 @{
     ViewBag.Title = "Index";
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.userid)
+            @Html.DisplayNameFor(model => model.agentID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.agentname)
+            @Html.DisplayNameFor(model => model.agentName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.agpassword)
+            @Html.DisplayNameFor(model => model.agentPass)
         </th>
         <th></th>
     </tr>
@@ -26,13 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.userid)
+            @Html.DisplayFor(modelItem => item.agentID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.agentname)
+            @Html.DisplayFor(modelItem => item.agentName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.agpassword)
+            @Html.DisplayFor(modelItem => item.agentPass)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

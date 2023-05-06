@@ -1,4 +1,4 @@
-﻿@model finalproject_se1.Models.tblLogin
+﻿@model finalproject_se1.Models.tblAgent
 
 @{
     ViewBag.Title = "LogIn";
@@ -12,23 +12,23 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>tblLogin</h4>
+    <h4></h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(model => model.agentname, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.agentName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.agentname, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.agentname, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.agentName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.agentName, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.agpassword, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.agentPass, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.agpassword, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.agpassword, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.agentPass, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.agentPass, "", new { @class = "text-danger" })
         </div>
     </div>
 
