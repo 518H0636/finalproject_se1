@@ -136,38 +136,38 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\tblAgent.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblBillDetail.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCategory.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblEmployee.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblGood.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblGoodRecieve.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Warehousemanagement.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Warehousemanagement.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Warehousemanagement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Warehousemanagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Warehousemanagement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Warehousemanagement.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -204,25 +204,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\Warehousemanagement.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Warehousemanagement.edmx</DependentUpon>
+      <LastGenOutput>Warehousemanagement.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\Warehousemanagement.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>Warehousemanagement.edmx</DependentUpon>
+      <LastGenOutput>Warehousemanagement.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\css\bootstrap-grid.css.map" />
     <Content Include="Content\css\bootstrap-grid.min.css.map" />
     <Content Include="Content\css\bootstrap-grid.rtl.css.map" />
@@ -245,6 +238,13 @@
     <Content Include="Content\js\bootstrap.esm.min.js.map" />
     <Content Include="Content\js\bootstrap.js.map" />
     <Content Include="Content\js\bootstrap.min.js.map" />
+    <EntityDeploy Include="Models\Warehousemanagement.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Warehousemanagement.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Warehousemanagement.edmx.diagram">
+      <DependentUpon>Warehousemanagement.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -269,13 +269,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Goods\Create.cshtml" />
-    <Content Include="Views\Goods\Delete.cshtml" />
-    <Content Include="Views\Goods\Details.cshtml" />
-    <Content Include="Views\Goods\Edit.cshtml" />
     <Content Include="Views\Goods\Index.cshtml" />
     <Content Include="Views\Cart\Showtocart.cshtml" />
     <Content Include="Views\Cart\CartI.cshtml" />
+    <Content Include="Views\Cart\ShoppingS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

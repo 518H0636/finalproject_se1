@@ -48,6 +48,22 @@
         </tbody>
         <tfoot>
             <tr>
+                <td colspan="5">
+                    @using (Html.BeginForm("CheckOut","Cart"))
+                    {
+                        <table>
+                            <tr>
+                                <td>Agent ID</td>
+                                <td>
+                                    <input type="text" name="AgentID" required />
+                                    <input type="submit" name="name" value="CheckOut" class="btn-success" />
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </td>
+            </tr>
+            <tr>
                 <td colspan="4" style="text-align:right">Total Bill: @Model.totalM()</td>
             </tr>
         </tfoot>

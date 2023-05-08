@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="WarehousemanagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="WarehousemanagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblAgent">
           <Key>
             <PropertyRef Name="agentID" />
@@ -17,15 +17,13 @@
         </EntityType>
         <EntityType Name="tblBillDetail">
           <Key>
-            <PropertyRef Name="greID" />
-            <PropertyRef Name="goodID" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="greID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="goodID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="amount" Type="float" />
-          <Property Name="unitPrice" Type="float" />
-          <Property Name="totalBill" Type="float" />
-          <Property Name="billstatus" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="goodID" Type="nvarchar" MaxLength="10" />
+          <Property Name="orderID" Type="int" />
+          <Property Name="unitSold" Type="float" />
+          <Property Name="billAmount" Type="float" />
         </EntityType>
         <EntityType Name="tblCategory">
           <Key>
@@ -57,14 +55,25 @@
         </EntityType>
         <EntityType Name="tblGoodRecieve">
           <Key>
-            <PropertyRef Name="greID" />
+            <PropertyRef Name="orderID" />
           </Key>
-          <Property Name="greID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="empID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="agentID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="sellDate" Type="datetime" Nullable="false" />
-          <Property Name="greTotal" Type="float" />
+          <Property Name="orderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="agentID" Type="nvarchar" MaxLength="10" />
+          <Property Name="sellDate" Type="datetime" />
+          <Property Name="StatusG" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <Association Name="FK__tblBillDe__order__534D60F1">
+          <End Role="tblGoodRecieve" Type="Self.tblGoodRecieve" Multiplicity="0..1" />
+          <End Role="tblBillDetail" Type="Self.tblBillDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGoodRecieve">
+              <PropertyRef Name="orderID" />
+            </Principal>
+            <Dependent Role="tblBillDetail">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="WarehousemanagementModelStoreContainer">
           <EntitySet Name="tblAgent" EntityType="Self.tblAgent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBillDetail" EntityType="Self.tblBillDetail" Schema="dbo" store:Type="Tables" />
@@ -72,8 +81,13 @@
           <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblGood" EntityType="Self.tblGood" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblGoodRecieve" EntityType="Self.tblGoodRecieve" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblBillDe__order__534D60F1" Association="Self.FK__tblBillDe__order__534D60F1">
+            <End Role="tblGoodRecieve" EntitySet="tblGoodRecieve" />
+            <End Role="tblBillDetail" EntitySet="tblBillDetail" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WarehousemanagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -89,15 +103,14 @@
         </EntityType>
         <EntityType Name="tblBillDetail">
           <Key>
-            <PropertyRef Name="greID" />
-            <PropertyRef Name="goodID" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="greID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="goodID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="amount" Type="Double" />
-          <Property Name="unitPrice" Type="Double" />
-          <Property Name="totalBill" Type="Double" />
-          <Property Name="billstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="goodID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="orderID" Type="Int32" />
+          <Property Name="unitSold" Type="Double" />
+          <Property Name="billAmount" Type="Double" />
+          <NavigationProperty Name="tblGoodRecieve" Relationship="Self.FK__tblBillDe__order__534D60F1" FromRole="tblBillDetail" ToRole="tblGoodRecieve" />
         </EntityType>
         <EntityType Name="tblCategory">
           <Key>
@@ -129,28 +142,44 @@
         </EntityType>
         <EntityType Name="tblGoodRecieve">
           <Key>
-            <PropertyRef Name="greID" />
+            <PropertyRef Name="orderID" />
           </Key>
-          <Property Name="greID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="empID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="agentID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="sellDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="greTotal" Type="Double" />
+          <Property Name="orderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="agentID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="sellDate" Type="DateTime" Precision="3" />
+          <Property Name="StatusG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblBillDetail" Relationship="Self.FK__tblBillDe__order__534D60F1" FromRole="tblGoodRecieve" ToRole="tblBillDetail" />
         </EntityType>
-        <EntityContainer Name="WareHousemanagementEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__tblBillDe__order__534D60F1">
+          <End Role="tblGoodRecieve" Type="Self.tblGoodRecieve" Multiplicity="0..1" />
+          <End Role="tblBillDetail" Type="Self.tblBillDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGoodRecieve">
+              <PropertyRef Name="orderID" />
+            </Principal>
+            <Dependent Role="tblBillDetail">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WarehousemanagementEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblAgent" EntityType="Self.tblAgent" />
           <EntitySet Name="tblBillDetail" EntityType="Self.tblBillDetail" />
           <EntitySet Name="tblCategory" EntityType="Self.tblCategory" />
           <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" />
           <EntitySet Name="tblGood" EntityType="Self.tblGood" />
           <EntitySet Name="tblGoodRecieve" EntityType="Self.tblGoodRecieve" />
+          <AssociationSet Name="FK__tblBillDe__order__534D60F1" Association="Self.FK__tblBillDe__order__534D60F1">
+            <End Role="tblGoodRecieve" EntitySet="tblGoodRecieve" />
+            <End Role="tblBillDetail" EntitySet="tblBillDetail" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WarehousemanagementModelStoreContainer" CdmEntityContainer="WareHousemanagementEntities">
+        <EntityContainerMapping StorageEntityContainer="WarehousemanagementModelStoreContainer" CdmEntityContainer="WarehousemanagementEntities">
           <EntitySetMapping Name="tblAgent">
             <EntityTypeMapping TypeName="WarehousemanagementModel.tblAgent">
               <MappingFragment StoreEntitySet="tblAgent">
@@ -165,12 +194,11 @@
           <EntitySetMapping Name="tblBillDetail">
             <EntityTypeMapping TypeName="WarehousemanagementModel.tblBillDetail">
               <MappingFragment StoreEntitySet="tblBillDetail">
-                <ScalarProperty Name="greID" ColumnName="greID" />
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="goodID" ColumnName="goodID" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
-                <ScalarProperty Name="totalBill" ColumnName="totalBill" />
-                <ScalarProperty Name="billstatus" ColumnName="billstatus" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="unitSold" ColumnName="unitSold" />
+                <ScalarProperty Name="billAmount" ColumnName="billAmount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -208,11 +236,10 @@
           <EntitySetMapping Name="tblGoodRecieve">
             <EntityTypeMapping TypeName="WarehousemanagementModel.tblGoodRecieve">
               <MappingFragment StoreEntitySet="tblGoodRecieve">
-                <ScalarProperty Name="greID" ColumnName="greID" />
-                <ScalarProperty Name="empID" ColumnName="empID" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
                 <ScalarProperty Name="agentID" ColumnName="agentID" />
                 <ScalarProperty Name="sellDate" ColumnName="sellDate" />
-                <ScalarProperty Name="greTotal" ColumnName="greTotal" />
+                <ScalarProperty Name="StatusG" ColumnName="StatusG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

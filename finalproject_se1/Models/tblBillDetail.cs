@@ -14,11 +14,12 @@ namespace finalproject_se1.Models
     
     public partial class tblBillDetail
     {
-        public string greID { get; set; }
+        public int id { get; set; }
         public string goodID { get; set; }
-        public Nullable<double> amount { get; set; }
-        public Nullable<double> unitPrice { get; set; }
-        public Nullable<double> totalBill { get; set; }
-        public string billstatus { get; set; }
+        public Nullable<int> orderID { get; set; }
+        public Nullable<double> unitSold { get; set; }
+        public Nullable<double> billAmount { get; set; }
+    
+        public virtual tblGoodRecieve tblGoodRecieve { get; set; }
     }
 }

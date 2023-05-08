@@ -14,10 +14,18 @@ namespace finalproject_se1.Models
     
     public partial class tblGoodRecieve
     {
-        public string greID { get; set; }
-        public string empID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblGoodRecieve()
+        {
+            this.tblBillDetail = new HashSet<tblBillDetail>();
+        }
+    
+        public int orderID { get; set; }
         public string agentID { get; set; }
-        public System.DateTime sellDate { get; set; }
-        public Nullable<double> greTotal { get; set; }
+        public Nullable<System.DateTime> sellDate { get; set; }
+        public string StatusG { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblBillDetail> tblBillDetail { get; set; }
     }
 }

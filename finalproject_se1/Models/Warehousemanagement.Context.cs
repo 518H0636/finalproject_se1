@@ -13,10 +13,10 @@ namespace finalproject_se1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WareHousemanagementEntities : DbContext
+    public partial class WarehousemanagementEntities : DbContext
     {
-        public WareHousemanagementEntities()
-            : base("name=WareHousemanagementEntities")
+        public WarehousemanagementEntities()
+            : base("name=WarehousemanagementEntities")
         {
         }
     

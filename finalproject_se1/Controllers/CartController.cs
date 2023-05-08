@@ -10,7 +10,7 @@ namespace finalproject_se1.Controllers
 {
     public class CartController : Controller
     {
-        public WareHousemanagementEntities db=new WareHousemanagementEntities();
+        public WarehousemanagementEntities db=new WarehousemanagementEntities();
         public Cart GetCart()
         {
             Cart cart = Session["Cart"] as Cart;
@@ -60,6 +60,37 @@ namespace finalproject_se1.Controllers
             cart.RemoveC(id);
             return RedirectToAction("Showtocart", "Cart");
 
+        }
+        public ActionResult ShoppingS()
+        { 
+            return View();
+        }
+        public ActionResult CheckOut(FormCollection form)
+        {
+            try
+            {
+                Cart cart = Session["Cart"] as Cart;
+                tblGoodRecieve gr= new tblGoodRecieve();
+                gr.sellDate= DateTime.Now;
+                gr.agentID = form["AgentID"];
+                db.tblGoodRecieve.Add(gr);
+                foreach(var item in cart.Items) 
+                { 
+                    tblBillDetail detail = new tblBillDetail();
+                    detail.orderID = gr.orderID;
+                    detail.goodID = item.product.goodID;
+                    detail.unitSold = item.product.unitSold;
+                    detail.billAmount = item.quantity;
+                    db.tblBillDetail.Add(detail);
+                }
+                db.SaveChanges();
+                cart.ClearC();
+                return RedirectToAction("ShoppingS", "Cart");
+            }
+            catch 
+            {
+                return Content("Check out failed, pls do it again");
+            }
         }
     }
 }

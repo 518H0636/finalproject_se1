@@ -12,7 +12,7 @@ namespace finalproject_se1.Controllers
 {
     public class GoodsController : Controller
     {
-        private WareHousemanagementEntities db = new WareHousemanagementEntities();
+        private WarehousemanagementEntities db = new WarehousemanagementEntities();
 
         // GET: Goods
         public ActionResult Index()

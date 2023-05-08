@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<finalproject_se1.Models.tblGood>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Goods";
 }
 
-<h2>Index</h2>
+<h2>Product List</h2>
 
 <table class="table">
     <tr>
@@ -20,7 +20,7 @@
         <th>
             Price
         </th>
-        <th></th>
+        <th> </th>
     </tr>
 
 @foreach (var item in Model) 
@@ -42,11 +42,6 @@
             <a href="/Cart/Addtocart/@item.goodID">
                 <img src="@Url.Content("~/Content/cart.jpg")" style="width:30px" />
             </a>
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.goodID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.goodID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.goodID })
         </td>
     </tr>
 }

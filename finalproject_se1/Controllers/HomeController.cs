@@ -9,7 +9,7 @@ namespace finalproject_se1.Controllers
 {
     public class HomeController : Controller
     {
-        WareHousemanagementEntities db = new WareHousemanagementEntities();
+        WarehousemanagementEntities db = new WarehousemanagementEntities();
         public ActionResult Index()
         {
             return View();
