@@ -22,5 +22,6 @@ namespace finalproject_se1.Models
         public Nullable<double> totalM { get; set; }
     
         public virtual tblGoodRecieve tblGoodRecieve { get; set; }
+        public virtual tblGood tblGood { get; set; }
     }
 }

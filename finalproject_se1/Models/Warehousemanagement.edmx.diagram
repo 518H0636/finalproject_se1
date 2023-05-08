@@ -14,6 +14,7 @@
         <AssociationConnector Association="WarehousemanagementModel.FK__tblBillDe__order__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="WarehousemanagementModel.FK__tblGoodRe__agent__534D60F1" />
         <AssociationConnector Association="WarehousemanagementModel.FK__tblGood__cateID__4F7CD00D" />
+        <AssociationConnector Association="WarehousemanagementModel.FK__tblBillDe__goodI__5629CD9C" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
