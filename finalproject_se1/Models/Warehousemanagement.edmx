@@ -75,6 +75,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__tblGood__cateID__4F7CD00D">
+          <End Role="tblCategory" Type="Self.tblCategory" Multiplicity="1" />
+          <End Role="tblGood" Type="Self.tblGood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategory">
+              <PropertyRef Name="cateID" />
+            </Principal>
+            <Dependent Role="tblGood">
+              <PropertyRef Name="cateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblGoodRe__agent__534D60F1">
+          <End Role="tblAgent" Type="Self.tblAgent" Multiplicity="0..1" />
+          <End Role="tblGoodRecieve" Type="Self.tblGoodRecieve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAgent">
+              <PropertyRef Name="agentID" />
+            </Principal>
+            <Dependent Role="tblGoodRecieve">
+              <PropertyRef Name="agentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="WarehousemanagementModelStoreContainer">
           <EntitySet Name="tblAgent" EntityType="Self.tblAgent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBillDetail" EntityType="Self.tblBillDetail" Schema="dbo" store:Type="Tables" />
@@ -85,6 +109,14 @@
           <AssociationSet Name="FK__tblBillDe__order__5629CD9C" Association="Self.FK__tblBillDe__order__5629CD9C">
             <End Role="tblGoodRecieve" EntitySet="tblGoodRecieve" />
             <End Role="tblBillDetail" EntitySet="tblBillDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblGood__cateID__4F7CD00D" Association="Self.FK__tblGood__cateID__4F7CD00D">
+            <End Role="tblCategory" EntitySet="tblCategory" />
+            <End Role="tblGood" EntitySet="tblGood" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblGoodRe__agent__534D60F1" Association="Self.FK__tblGoodRe__agent__534D60F1">
+            <End Role="tblAgent" EntitySet="tblAgent" />
+            <End Role="tblGoodRecieve" EntitySet="tblGoodRecieve" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -100,6 +132,7 @@
           <Property Name="phoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="agentAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="agentPass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblGoodRecieve" Relationship="WarehousemanagementModel.FK__tblGoodRe__agent__534D60F1" FromRole="tblAgent" ToRole="tblGoodRecieve" />
         </EntityType>
         <EntityType Name="tblBillDetail">
           <Key>
@@ -119,6 +152,7 @@
           </Key>
           <Property Name="cateID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="cateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblGood" Relationship="WarehousemanagementModel.FK__tblGood__cateID__4F7CD00D" FromRole="tblCategory" ToRole="tblGood" />
         </EntityType>
         <EntityType Name="tblEmployee">
           <Key>
@@ -140,6 +174,7 @@
           <Property Name="unitPrice" Type="Double" />
           <Property Name="unitSold" Type="Double" />
           <Property Name="importnote" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblCategory" Relationship="WarehousemanagementModel.FK__tblGood__cateID__4F7CD00D" FromRole="tblGood" ToRole="tblCategory" />
         </EntityType>
         <EntityType Name="tblGoodRecieve">
           <Key>
@@ -150,6 +185,7 @@
           <Property Name="sellDate" Type="DateTime" Precision="3" />
           <Property Name="StatusG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblBillDetail" Relationship="Self.FK__tblBillDe__order__534D60F1" FromRole="tblGoodRecieve" ToRole="tblBillDetail" />
+          <NavigationProperty Name="tblAgent" Relationship="WarehousemanagementModel.FK__tblGoodRe__agent__534D60F1" FromRole="tblGoodRecieve" ToRole="tblAgent" />
         </EntityType>
         <Association Name="FK__tblBillDe__order__534D60F1">
           <End Role="tblGoodRecieve" Type="Self.tblGoodRecieve" Multiplicity="0..1" />
@@ -174,7 +210,39 @@
             <End Role="tblGoodRecieve" EntitySet="tblGoodRecieve" />
             <End Role="tblBillDetail" EntitySet="tblBillDetail" />
           </AssociationSet>
+          <AssociationSet Name="FK__tblGoodRe__agent__534D60F1" Association="WarehousemanagementModel.FK__tblGoodRe__agent__534D60F1">
+            <End Role="tblAgent" EntitySet="tblAgent" />
+            <End Role="tblGoodRecieve" EntitySet="tblGoodRecieve" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblGood__cateID__4F7CD00D" Association="WarehousemanagementModel.FK__tblGood__cateID__4F7CD00D">
+            <End Role="tblCategory" EntitySet="tblCategory" />
+            <End Role="tblGood" EntitySet="tblGood" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__tblGoodRe__agent__534D60F1">
+          <End Type="WarehousemanagementModel.tblAgent" Role="tblAgent" Multiplicity="0..1" />
+          <End Type="WarehousemanagementModel.tblGoodRecieve" Role="tblGoodRecieve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAgent">
+              <PropertyRef Name="agentID" />
+            </Principal>
+            <Dependent Role="tblGoodRecieve">
+              <PropertyRef Name="agentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblGood__cateID__4F7CD00D">
+          <End Type="WarehousemanagementModel.tblCategory" Role="tblCategory" Multiplicity="1" />
+          <End Type="WarehousemanagementModel.tblGood" Role="tblGood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategory">
+              <PropertyRef Name="cateID" />
+            </Principal>
+            <Dependent Role="tblGood">
+              <PropertyRef Name="cateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

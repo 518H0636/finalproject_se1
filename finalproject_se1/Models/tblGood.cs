@@ -21,5 +21,7 @@ namespace finalproject_se1.Models
         public Nullable<double> unitPrice { get; set; }
         public Nullable<double> unitSold { get; set; }
         public string importnote { get; set; }
+    
+        public virtual tblCategory tblCategory { get; set; }
     }
 }

@@ -27,5 +27,6 @@ namespace finalproject_se1.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblBillDetail> tblBillDetail { get; set; }
+        public virtual tblAgent tblAgent { get; set; }
     }
 }
