@@ -81,6 +81,7 @@ namespace finalproject_se1.Controllers
                     detail.goodID = item.product.goodID;
                     detail.unitSold = item.product.unitSold;
                     detail.billAmount = item.quantity;
+                    detail.totalM= cart.totalM();
                     db.tblBillDetail.Add(detail);
                 }
                 db.SaveChanges();

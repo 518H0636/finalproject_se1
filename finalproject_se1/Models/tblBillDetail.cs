@@ -19,6 +19,7 @@ namespace finalproject_se1.Models
         public Nullable<int> orderID { get; set; }
         public Nullable<double> unitSold { get; set; }
         public Nullable<double> billAmount { get; set; }
+        public Nullable<double> totalM { get; set; }
     
         public virtual tblGoodRecieve tblGoodRecieve { get; set; }
     }
