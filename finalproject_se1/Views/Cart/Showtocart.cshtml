@@ -1,0 +1,57 @@
+﻿@model finalproject_se1.Models.Cart
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2></h2>
+@if (Model!=null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product name </th>
+                <th>Product price </th>
+                <th>Quantity </th>
+                <th>Total </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                double total = item.product.unitSold.Value * item.quantity;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.product.goodName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.product.unitSold)
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("UpdateQ", "Cart"))
+                        {
+                            <input type="hidden" value="@item.product.goodID" name="goodid" />
+                            <input type="number" value="@item.quantity" name="qa" />
+                            <input type="submit" value="Change quantity" />
+                        }
+
+                    </td>
+                    <td>
+                        Total:@total
+                    </td>
+                    <td>
+                        <a href="/Cart/RemoveCart/@item.product.goodID">Remove from cart</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" style="text-align:right">Total Bill: @Model.totalM()</td>
+            </tr>
+        </tfoot>
+    </table>
+    <a href="@Url.Action("Index","Goods")" style="margin-bottom: auto;text-align:center"> Continue Shopping</a>
+}
+

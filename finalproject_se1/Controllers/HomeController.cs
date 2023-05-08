@@ -9,10 +9,10 @@ namespace finalproject_se1.Controllers
 {
     public class HomeController : Controller
     {
-        WarehousemanagementEntities db = new WarehousemanagementEntities();
+        WareHousemanagementEntities db = new WareHousemanagementEntities();
         public ActionResult Index()
         {
-            return View(db.tblAgent.ToList());
+            return View();
         }
         public ActionResult LogOut()
         {
@@ -40,5 +40,5 @@ namespace finalproject_se1.Controllers
             }
             return View();
         }
-    }   
+    }
 }

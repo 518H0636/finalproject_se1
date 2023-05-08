@@ -6,6 +6,10 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,14 +25,18 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Orders", "Order", "Home")</li>
-                    <li>@Html.ActionLink("Status", "Status", "Home")</li>
+                    <li>@Html.ActionLink("Goods", "Index", "Goods")</li>
+
                 </ul>
 
                 <ul class="nav navbar-nav" style="float:right !important">
                     @if (Session["agentName"] != null)
                     {
-                        <li><p style="color:#fff;margin-top:15px;">Welcome @Session["agentName"]</p></li>
+                        <li><p style="color: #fff; margin-top: 15px; margin-right: 10p">  Welcome @Session["agentName"]</p></li>
+                        <li>
+                            @Html.Action("CartI", "Cart")
+                            <img src="@Url.Content("~/Content/cart2.jpg")" style="width:30px;margin-top:8px" />
+                        </li>
                         <li>@Html.ActionLink("Log Out", "LogOut", "Home")</li>
                     }
                 </ul>
