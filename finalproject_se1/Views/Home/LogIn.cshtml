@@ -4,7 +4,7 @@
     ViewBag.Title = "LogIn";
 }
 
-<h2>Log in to the Shop</h2>
+<h2>Log in</h2>
 
 
 @using (Html.BeginForm())
@@ -17,16 +17,18 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(model => model.agentName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
+            <td>User Name</td>
+            <td></td>
             @Html.EditorFor(model => model.agentName, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.agentName, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.agentPass, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
+            <td>Password</td>
+            <td></td>
             @Html.EditorFor(model => model.agentPass, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.agentPass, "", new { @class = "text-danger" })
         </div>
